@@ -1,0 +1,11 @@
+from PIL import ImageWIDTH = 30
+HEIGHT = 30img = Image.new('RGB', (WIDTH, HEIGHT), color = 'red')img.save("NewImage.png")#axis("off")
+#imshow(img)
+pixValues = list(img.getdata())for i in range(len(pixValues)):
+if i%2 == 0:
+pixValues[i] = (255, 255, 255)for c in range(WIDTH):
+for r in range(HEIGHT):
+pixValues[c*WIDTH+r] = (3*c+r)for c in range(WIDTH):
+for r in range(HEIGHT):
+pixValues[r*WIDTH+r] = (10*r+c)imgModified = Image.new(img.mode, img.size)
+imgModified.putdata(pixValues)imgModified.show()
